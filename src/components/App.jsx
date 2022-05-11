@@ -12,7 +12,7 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/cadastro" element={<TelaCadastro />} />
+          <Route path="/auth/cadastro" element={<TelaCadastro />} />
         </Routes>
       </BrowserRouter>
     </>
