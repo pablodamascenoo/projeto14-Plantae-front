@@ -8,6 +8,13 @@ export const Container = styled.main`
   align-items: center;
   flex-direction: column;
 
+  a {
+    text-decoration: none;
+    color: #1da154;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+
   h1 {
     font-family: "Dosis", sans-serif;
     font-size: 50px;
@@ -38,14 +45,43 @@ export const Container = styled.main`
       padding-left: 15px;
       background-color: ${(props) =>
         props.enviado ? "rgba(0, 0, 0, 0.2)" : "white"};
+      transition: 0.5s;
+
+      :focus {
+        outline: none;
+        transform: scale(1.1);
+        border-color: #1b663e;
+      }
     }
 
     button {
       border: none;
-      background-color: ${(props) => (props.preenchido ? "grey" : "#20b25d")};
+      background-color: grey;
       cursor: ${(props) => (props.preenchido ? "initial" : "pointer")};
       font-weight: 700;
       color: white;
+      animation: ${(props) =>
+        props.preenchido
+          ? "fadeOutColor 0.5s forwards"
+          : "fadeInColor 0.5s forwards"};
+    }
+  }
+
+  @keyframes fadeInColor {
+    from {
+      background-color: #888888;
+    }
+    to {
+      background-color: #20b25d;
+    }
+  }
+
+  @keyframes fadeOutColor {
+    from {
+      background-color: #20b25d;
+    }
+    to {
+      background-color: #888888;
     }
   }
 `;

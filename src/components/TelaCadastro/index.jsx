@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { Container } from "./style";
 
@@ -106,6 +106,9 @@ export default function TelaCadastro() {
           Cadastrar
         </button>
       </form>
+      <Link to="/auth/login">
+        <p>Já possui uma conta? clique aqui</p>
+      </Link>
     </Container>
   );
 }
