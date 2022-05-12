@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ImpulseSpinner } from "react-spinners-kit";
 import UserContext from "../../contexts/UserContext";
 
@@ -49,7 +49,7 @@ export default function TelaLogin() {
       );
       SetUserInfo({ token: data.token, nome: data.nome });
       SetEnviado(false);
-      navigate("/auth/cadastro");
+      navigate("/");
     });
     promisse.catch((erro) => {
       alert(erro.response.data);
@@ -86,6 +86,10 @@ export default function TelaLogin() {
           {enviado ? <ImpulseSpinner size={40} color="#20b25d" /> : "Cadastrar"}
         </button>
       </form>
+
+      <Link to="/auth/cadastro">
+        <p>Não possui conta? clique aqui!</p>
+      </Link>
     </Container>
   );
 }
