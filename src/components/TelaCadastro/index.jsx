@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { ImpulseSpinner } from "react-spinners-kit";
 
 import { Container } from "./style";
 
@@ -102,8 +103,11 @@ export default function TelaCadastro() {
             SetCadastro({ ...cadastro, senha2: e.target.value });
           }}
         />
-        <button type="submit" disabled={!(nome && email && senha && senha2)}>
-          Cadastrar
+        <button
+          type="submit"
+          disabled={!(nome && email && senha && senha2) || enviado}
+        >
+          {enviado ? <ImpulseSpinner size={40} color="#20b25d" /> : "Cadastrar"}
         </button>
       </form>
       <Link to="/auth/login">
