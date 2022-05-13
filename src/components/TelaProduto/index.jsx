@@ -10,7 +10,7 @@ export default function TelaProduto() {
   const [produto, SetProduto] = useState();
 
   useEffect(() => {
-    const promisse = axios.get(`http://localhost:5000/produtos/${id}`);
+    const promisse = axios.get(`https://plantae.herokuapp.com/produtos/${id}`);
 
     promisse
       .then((obj) => {
@@ -62,4 +62,4 @@ export default function TelaProduto() {
   );
 }
 
-//https://plantae.herokuapp.com
+//
