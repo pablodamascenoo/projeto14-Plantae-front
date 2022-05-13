@@ -6,6 +6,7 @@ import GlobalStyle from "../assets/global_styles/GlobalStyle";
 import TelaCadastro from "./TelaCadastro";
 import UserContext from "../contexts/UserContext";
 import TelaLogin from "./TelaLogin";
+import TelaProduto from "./TelaProduto";
 
 export default function App() {
   const [userInfo, SetUserInfo] = useState(
@@ -21,6 +22,7 @@ export default function App() {
           <Routes>
             <Route path="/auth/cadastro" element={<TelaCadastro />} />
             <Route path="/auth/login" element={<TelaLogin />} />
+            <Route path="/produtos/:id" element={<TelaProduto />} />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
