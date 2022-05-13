@@ -9,7 +9,7 @@ export default function App() {
     <Reset />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Inicio />}/>
+        <Route path="/inicio" element={<Inicio />}/>
       </Routes>
     </BrowserRouter>
     </>

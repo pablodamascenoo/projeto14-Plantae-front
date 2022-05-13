@@ -8,7 +8,7 @@ export const Container = styled.div`
     width: auto;
     max-width: 92%;
     margin: auto;
-    margin-top: 45px;
+    margin-top: 80px;
 
     background: yellow;
 

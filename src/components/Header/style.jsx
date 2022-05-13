@@ -4,10 +4,11 @@ export const Container = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: center;
-position: sticky;
+position: fixed;
 
-max-width: 100%;
+width: 100%;
 background: pink;
+top:0;
 
     img {
         width: 30px;

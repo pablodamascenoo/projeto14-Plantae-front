@@ -1,10 +1,19 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 140px;
-height: 170px;
-background: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-margin: 15px;
+    width: 140px;
+    height: 170px;
+    background: green;
+
+    margin: 15px;
+
+    img {
+        width: 120px;
+        max-height: 120px;
+    }
 
 `
