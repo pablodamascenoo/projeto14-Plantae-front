@@ -7,6 +7,7 @@ import GlobalStyle from "../assets/global_styles/GlobalStyle";
 import TelaCadastro from "./TelaCadastro";
 import UserContext from "../contexts/UserContext";
 import TelaLogin from "./TelaLogin";
+import { useState } from "react";
 
 
 export default function App() {

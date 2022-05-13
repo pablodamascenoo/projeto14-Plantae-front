@@ -9,6 +9,7 @@ position: fixed;
 width: 100%;
 background: pink;
 top:0;
+z-index: 1;
 
     img {
         width: 30px;
