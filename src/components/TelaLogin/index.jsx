@@ -53,7 +53,7 @@ export default function TelaLogin() {
     });
     promisse.catch((erro) => {
       alert(erro.response.data);
-      console.log(e);
+      console.log(erro);
       SetEnviado(false);
     });
   }
