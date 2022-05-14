@@ -9,7 +9,7 @@ export default function Header() {
     return(
         <Container>
             <div className="agrupar">
-                <img src={menu} alt="menu"/>
+                <img src={menu} alt="menu" className="menu"/>
                 
                 <Logo />
                 <div> 

@@ -9,7 +9,6 @@ export const Container = styled.div`
     max-width: 92%;
     margin: auto;
     margin-top: 80px;
-
-    background: yellow;
+    padding-bottom: 20px;
 
 `

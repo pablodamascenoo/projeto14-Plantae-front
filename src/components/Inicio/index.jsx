@@ -28,7 +28,7 @@ export default function Inicio() {
     return (
         <>
         <Header />
-        <Filtro />
+        {/*<Filtro />*/}
         <Container>
             {
             produtos.map((produto , index) => <VitrineContainer key={index} nomeProduto={produto.nome} imagem={produto.imagem} preco={produto.preco}id={produto._id}/>)
