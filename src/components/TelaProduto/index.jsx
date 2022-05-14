@@ -1,13 +1,31 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import UserContext from "../../contexts/UserContext";
 
 import { Box, ImageBox, InfoBox, FinishButton } from "./style";
 
 export default function TelaProduto() {
   const { id } = useParams();
+  const { userInfo } = useContext(UserContext);
+
   const [quantidade, SetQuantidade] = useState(1);
-  const [produto, SetProduto] = useState();
+  const [produto, SetProduto] = useState({
+    imagem: "",
+    nome: "",
+    descricao: "",
+    preco: "",
+  });
+  const [enviado, SetEnviado] = useState(false);
+
+  const navigate = useNavigate();
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userInfo?.token}`,
+    },
+  };
 
   useEffect(() => {
     const promisse = axios.get(`https://plantae.herokuapp.com/produtos/${id}`);
@@ -23,6 +41,38 @@ export default function TelaProduto() {
       });
   }, []);
 
+  function enviarItemCarrinho() {
+    SetEnviado(true);
+
+    if (!userInfo) {
+      alert("O usuário deve estar logado para adicionar itens ao carrinho");
+      navigate("/auth/login");
+      SetEnviado(false);
+    }
+
+    const promisse = axios.post(
+      "https://plantae.herokuapp.com/carrinho",
+      { quantidade, idProduto: id },
+      config
+    );
+
+    promisse.then(() => {
+      navigate("/inicio");
+      SetEnviado(false);
+    });
+    promisse.catch((erro) => {
+      console.log(erro);
+      if (erro.response.status === 401) {
+        alert("O usuário deve estar logado para adicionar itens ao carrinho");
+        navigate("/auth/login");
+        SetEnviado(false);
+      } else {
+        alert(erro.response.data);
+        SetEnviado(false);
+      }
+    });
+  }
+
   return (
     <Box>
       <ImageBox>
@@ -35,6 +85,7 @@ export default function TelaProduto() {
         </div>
         <div className="quantidade">
           <button
+            disabled={enviado}
             onClick={() => {
               let novoValor = quantidade === 1 ? quantidade : quantidade - 1;
               SetQuantidade(novoValor);
@@ -44,6 +95,7 @@ export default function TelaProduto() {
           </button>
           <p>{quantidade}</p>
           <button
+            disabled={enviado}
             onClick={() => {
               let novoValor = quantidade + 1;
               SetQuantidade(novoValor);
@@ -56,10 +108,13 @@ export default function TelaProduto() {
           <h2>Descrição</h2>
           <p>{produto?.descricao}</p>
         </div>
-        <FinishButton>Adicionar ao carrinho</FinishButton>
+        <FinishButton
+          disabled={enviado || produto.preco === ""}
+          onClick={enviarItemCarrinho}
+        >
+          Adicionar ao carrinho
+        </FinishButton>
       </InfoBox>
     </Box>
   );
 }
-
-//
