@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Reset from "../assets/global_styles/Reset";
+import Inicio from "./Inicio/index.jsx";
 import GlobalStyle from "../assets/global_styles/GlobalStyle";
 import TelaCadastro from "./TelaCadastro";
 import UserContext from "../contexts/UserContext";
@@ -23,6 +23,7 @@ export default function App() {
             <Route path="/auth/cadastro" element={<TelaCadastro />} />
             <Route path="/auth/login" element={<TelaLogin />} />
             <Route path="/produtos/:id" element={<TelaProduto />} />
+            <Route path="/inicio" element={<Inicio />} />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
