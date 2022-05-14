@@ -83,7 +83,7 @@ export default function TelaLogin() {
           }}
         />
         <button type="submit" disabled={!(email && senha) || enviado}>
-          {enviado ? <ImpulseSpinner size={40} color="#20b25d" /> : "Cadastrar"}
+          {enviado ? <ImpulseSpinner size={40} color="#20b25d" /> : "Entrar"}
         </button>
       </form>
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import UserContext from "../../contexts/UserContext";
+import Header from "../Header";
 
 import { Box, ImageBox, InfoBox, FinishButton } from "./style";
 
@@ -37,7 +38,8 @@ export default function TelaProduto() {
       })
       .catch((erro) => {
         alert(erro.response.data);
-        console.log(erro);
+        navigate("/inicio");
+        return;
       });
   }, []);
 
@@ -48,6 +50,7 @@ export default function TelaProduto() {
       alert("O usuário deve estar logado para adicionar itens ao carrinho");
       navigate("/auth/login");
       SetEnviado(false);
+      return;
     }
 
     const promisse = axios.post(
@@ -75,6 +78,7 @@ export default function TelaProduto() {
 
   return (
     <Box>
+      <Header />
       <ImageBox>
         <img src={produto?.imagem} alt={produto?.nome} />
       </ImageBox>
