@@ -17,10 +17,11 @@ export default function Header() {
                 <Logo />
                 <div> 
                     <Link to={"/auth/login"}>
-                    <img src={pessoa} alt="perfil" />
+                        <img src={pessoa} alt="perfil" />
                     </Link>
-                    
-                    <img src={carrinho} alt="carrinho"/>
+                    <Link to={"/carrinho"}>
+                        <img src={carrinho} alt="carrinho"/>
+                    </Link>
                 </div>
             </div>
             

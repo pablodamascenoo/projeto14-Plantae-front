@@ -9,7 +9,7 @@ export default function Inicio() {
     const [produtos , setProdutos] = useState([]);
 
     useEffect(()=>{
-        let requisicao = axios.get("//localhost:5000/produtos");
+        let requisicao = axios.get("https://plantae.herokuapp.com/produtos");
         requisicao.then(resposta => {
             setProdutos(resposta.data);          
         })
