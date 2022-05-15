@@ -16,7 +16,7 @@ background: #FFFFFF;
         width: 30px;
     }
 
-    .menu {
+    .casinha {
         margin-left: 8px;
     }
 

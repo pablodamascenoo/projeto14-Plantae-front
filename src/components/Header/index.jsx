@@ -3,14 +3,16 @@ import Logo from "../Logo";
 import { Container } from "./style";
 import pessoa from "../../assets/SVGs/person-outline.svg"
 import carrinho from "../../assets/SVGs/cart-outline.svg"
-import menu from "../../assets/SVGs/menu-outline.svg"
+import casinha from "../../assets/SVGs/home-outline.svg"
 import { Link } from "react-router-dom";
 
 export default function Header() {
     return(
         <Container>
             <div className="agrupar">
-                <img src={menu} alt="menu" className="menu"/>
+                <Link to="/">
+                    <img src={casinha} alt="Início" className="casinha"/>
+                </Link>
                 
                 <Logo />
                 <div> 

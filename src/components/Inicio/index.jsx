@@ -3,7 +3,6 @@ import axios from "axios";
 import { Container } from "./style.jsx";
 import Header from "../Header/index.jsx";
 import VitrineContainer from "../VitrineContainer/index.jsx";
-import Filtro from "../Filtro/index.jsx";
 import { useEffect , useState } from "react";
 
 export default function Inicio() {
@@ -31,7 +30,7 @@ export default function Inicio() {
         {/*<Filtro />*/}
         <Container>
             {
-            produtos.map((produto , index) => <VitrineContainer key={index} nomeProduto={produto.nome} imagem={produto.imagem} preco={produto.preco}id={produto._id}/>)
+            produtos.map((produto , index) => <VitrineContainer key={index} nomeProduto={produto.nome} imagem={produto.imagem} preco={produto.preco} id={produto._id}/>)
             }
             
         </Container>
