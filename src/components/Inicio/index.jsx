@@ -3,14 +3,13 @@ import axios from "axios";
 import { Container } from "./style.jsx";
 import Header from "../Header/index.jsx";
 import VitrineContainer from "../VitrineContainer/index.jsx";
-import Filtro from "../Filtro/index.jsx";
 import { useEffect , useState } from "react";
 
 export default function Inicio() {
     const [produtos , setProdutos] = useState([]);
 
     useEffect(()=>{
-        let requisicao = axios.get("//localhost:5000/produtos");
+        let requisicao = axios.get("https://plantae.herokuapp.com/produtos");
         requisicao.then(resposta => {
             setProdutos(resposta.data);          
         })
@@ -28,10 +27,10 @@ export default function Inicio() {
     return (
         <>
         <Header />
-        <Filtro />
+        {/*<Filtro />*/}
         <Container>
             {
-            produtos.map((produto , index) => <VitrineContainer key={index} nomeProduto={produto.nome} imagem={produto.imagem} preco={produto.preco}id={produto._id}/>)
+            produtos.map((produto , index) => <VitrineContainer key={index} nomeProduto={produto.nome} imagem={produto.imagem} preco={produto.preco} id={produto._id}/>)
             }
             
         </Container>

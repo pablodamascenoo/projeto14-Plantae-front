@@ -5,14 +5,19 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 position: fixed;
-
+padding-top: 17px;
 width: 100%;
-background: pink;
 top:0;
 z-index: 1;
 
+background: #FFFFFF;
+
     img {
         width: 30px;
+    }
+
+    .casinha {
+        margin-left: 8px;
     }
 
     div {
@@ -20,12 +25,15 @@ z-index: 1;
         flex-direction: row;
         justify-content: space-between;
 
-        width: 75px;
+        width: 70px;
+
+        margin-right: 8px;
 
     }
 
     .agrupar {
         width: 95%;
+        margin-right: 0;
         margin: auto;
         justify-content: space-between;
     }
