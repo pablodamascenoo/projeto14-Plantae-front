@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.main`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -9,7 +9,6 @@ export const Container = styled.div`
     max-width: 92%;
     margin: auto;
     margin-top: 80px;
-
-    background: yellow;
+    padding-bottom: 20px;
 
 `

@@ -24,7 +24,7 @@ export const ImageBox = styled.div`
 
 export const InfoBox = styled.div`
   height: 55%;
-  position: fixed;
+  position: absolute;
   background-color: white;
   z-index: 100;
   bottom: 0;

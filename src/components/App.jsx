@@ -7,6 +7,7 @@ import TelaCadastro from "./TelaCadastro";
 import UserContext from "../contexts/UserContext";
 import TelaLogin from "./TelaLogin";
 import TelaProduto from "./TelaProduto";
+import Carrinho from "./Carrinho";
 
 export default function App() {
   const [userInfo, SetUserInfo] = useState(
@@ -23,7 +24,8 @@ export default function App() {
             <Route path="/auth/cadastro" element={<TelaCadastro />} />
             <Route path="/auth/login" element={<TelaLogin />} />
             <Route path="/produtos/:id" element={<TelaProduto />} />
-            <Route path="/inicio" element={<Inicio />} />
+            <Route path="/" element={<Inicio />} />
+            <Route path="carrinho" element={<Carrinho />}/>
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
