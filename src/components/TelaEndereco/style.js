@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Box = styled.main`
-  padding-top: 50px;
+  padding-top: 70px;
 
   form {
     display: flex;
@@ -12,7 +12,7 @@ export const Box = styled.main`
   }
 
   h2 {
-    font-size: 30px;
+    font-size: 35px;
     font-family: "Lato", sans-serif;
     font-weight: 900;
   }
