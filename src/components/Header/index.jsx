@@ -4,6 +4,7 @@ import { Container } from "./style";
 import pessoa from "../../assets/SVGs/person-outline.svg"
 import carrinho from "../../assets/SVGs/cart-outline.svg"
 import menu from "../../assets/SVGs/menu-outline.svg"
+import { Link } from "react-router-dom";
 
 export default function Header() {
     return(
@@ -13,7 +14,10 @@ export default function Header() {
                 
                 <Logo />
                 <div> 
+                    <Link to={"/auth/login"}>
                     <img src={pessoa} alt="perfil"/>
+                    </Link>
+                    
                     <img src={carrinho} alt="carrinho"/>
                 </div>
             </div>

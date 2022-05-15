@@ -23,7 +23,7 @@ export default function App() {
             <Route path="/auth/cadastro" element={<TelaCadastro />} />
             <Route path="/auth/login" element={<TelaLogin />} />
             <Route path="/produtos/:id" element={<TelaProduto />} />
-            <Route path="/inicio" element={<Inicio />} />
+            <Route path="/" element={<Inicio />} />
           </Routes>
         </UserContext.Provider>
       </BrowserRouter>
