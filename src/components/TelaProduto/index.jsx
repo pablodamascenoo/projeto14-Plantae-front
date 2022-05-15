@@ -38,7 +38,7 @@ export default function TelaProduto() {
       })
       .catch((erro) => {
         alert(erro.response.data);
-        navigate("/inicio");
+        navigate("/");
         return;
       });
   }, []);
