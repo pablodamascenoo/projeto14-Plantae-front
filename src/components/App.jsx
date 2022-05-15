@@ -7,10 +7,15 @@ import TelaCadastro from "./TelaCadastro";
 import UserContext from "../contexts/UserContext";
 import TelaLogin from "./TelaLogin";
 import TelaProduto from "./TelaProduto";
+import TelaEndereco from "./TelaEndereco";
+import AddressContext from "../contexts/AddressContext";
 
 export default function App() {
   const [userInfo, SetUserInfo] = useState(
     JSON.parse(localStorage.getItem("UserInfo"))
+  );
+  const [address, SetAddress] = useState(
+    JSON.parse(localStorage.getItem("Address"))
   );
 
   return (
@@ -19,12 +24,15 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <UserContext.Provider value={{ userInfo, SetUserInfo }}>
-          <Routes>
-            <Route path="/auth/cadastro" element={<TelaCadastro />} />
-            <Route path="/auth/login" element={<TelaLogin />} />
-            <Route path="/produtos/:id" element={<TelaProduto />} />
-            <Route path="/inicio" element={<Inicio />} />
-          </Routes>
+          <AddressContext.Provider value={{ address, SetAddress }}>
+            <Routes>
+              <Route path="/auth/cadastro" element={<TelaCadastro />} />
+              <Route path="/auth/login" element={<TelaLogin />} />
+              <Route path="/produtos/:id" element={<TelaProduto />} />
+              <Route path="/inicio" element={<Inicio />} />
+              <Route path="/checkout/endereco" element={<TelaEndereco />} />
+            </Routes>
+          </AddressContext.Provider>
         </UserContext.Provider>
       </BrowserRouter>
     </>
