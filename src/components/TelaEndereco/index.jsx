@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Header from "../Header";
 import { Box, Input, Button } from "./style";
 import { ImpulseSpinner } from "react-spinners-kit";
+import AddressContext from "../../contexts/AddressContext";
 
 export default function TelaEndereco() {
   const [endereco, SetEndereco] = useState({
@@ -15,7 +16,7 @@ export default function TelaEndereco() {
     estado: "",
     complemento: "",
   });
-  const [enviado, setEnviado] = useState(false);
+  const { address, SetAddress } = useContext(AddressContext);
 
   function enderecoVazio() {
     const keys = Object.keys(endereco);
@@ -54,11 +55,18 @@ export default function TelaEndereco() {
     }
   }
 
+  function armazenaEndereco(e) {
+    e.preventDefault();
+
+    localStorage.setItem("Address", JSON.stringify({ ...endereco }));
+    SetAddress({ ...endereco });
+  }
+
   return (
     <Box>
       <Header />
 
-      <form action="">
+      <form onSubmit={armazenaEndereco}>
         <h2>Endereço</h2>
         <Input
           type="text"
@@ -70,6 +78,7 @@ export default function TelaEndereco() {
           }}
         />
         <Input
+          required
           placeholder="Cep"
           type="text"
           name="cep"
@@ -128,14 +137,10 @@ export default function TelaEndereco() {
         />
         <Button
           type="submit"
-          disabled={enviado || enderecoVazio()}
+          disabled={enderecoVazio()}
           preenchido={enderecoVazio()}
         >
-          {enviado ? (
-            <ImpulseSpinner size={40} color="#20b25d" />
-          ) : (
-            "Ir para pagamento"
-          )}
+          Ir para pagamento
         </Button>
       </form>
     </Box>
