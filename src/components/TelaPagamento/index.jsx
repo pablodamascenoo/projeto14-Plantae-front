@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ImpulseSpinner } from "react-spinners-kit";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import Header from "../Header";
 import { Input, Box, Button } from "../TelaEndereco/style";
+
+import AddressContext from "../../contexts/AddressContext";
+import UserContext from "../../contexts/UserContext";
 
 export default function TelaPagamento() {
   const [pagamento, SetPagamento] = useState({
@@ -11,10 +17,48 @@ export default function TelaPagamento() {
     validade: "",
   });
   const [enviado, SetEnviado] = useState(false);
-
+  const { address } = useContext(AddressContext);
+  const { userInfo } = useContext(UserContext);
+  const navigate = useNavigate();
   const { numero, cpf, codigo, validade } = pagamento;
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userInfo?.token}`,
+    },
+  };
 
-  console.log(validade);
+  useEffect(() => {
+    if (!userInfo) {
+      alert("é necessário estar logado para estar aqui");
+      navigate("/auth/login");
+      return;
+    }
+    if (!address) {
+      alert("preencha os dados de endereço primeiro");
+      navigate("checkout/endereco");
+      return;
+    }
+
+    const promisse = axios.get(
+      "https://plantae.herokuapp.com/carrinho",
+      config
+    );
+
+    promisse.then((obj) => {
+      const { data } = obj;
+      if (!data.length) {
+        alert("O usuário não possui itens no carrinho");
+        navigate("/");
+        return;
+      }
+    });
+
+    promisse.catch((erro) => {
+      alert(erro.response.data);
+      navigate("/");
+      return;
+    });
+  }, []);
 
   function campoVazio() {
     let keys = Object.keys(pagamento);
@@ -42,12 +86,42 @@ export default function TelaPagamento() {
     SetPagamento({ ...pagamento, numero: value });
   }
 
+  function concluirCompra(e) {
+    e.preventDefault();
+    SetEnviado(true);
+
+    if (campoVazio()) {
+      alert("preencha todos os campos!");
+      SetEnviado(false);
+      return;
+    }
+
+    const promisse = axios.post(
+      `https://plantae.herokuapp.com/checkout`,
+      { address, pagamento },
+      config
+    );
+
+    promisse.then(() => {
+      navigate("/sucesso");
+      SetEnviado(false);
+      return;
+    });
+
+    promisse.catch((erro) => {
+      alert(erro.response.data);
+      SetEnviado(false);
+      return;
+    });
+  }
+
   return (
     <Box>
       <Header />
-      <form action="">
+      <form onSubmit={concluirCompra}>
         <h2>Pagamento</h2>
         <Input
+          disabled={enviado}
           enviado={enviado}
           maxLength={19}
           type="text"
@@ -57,6 +131,7 @@ export default function TelaPagamento() {
           onChange={(e) => mascaraNumeroCartao(e.target.value)}
         />
         <Input
+          disabled={enviado}
           enviado={enviado}
           type="text"
           required
@@ -66,6 +141,7 @@ export default function TelaPagamento() {
           maxLength={14}
         />
         <Input
+          disabled={enviado}
           enviado={enviado}
           type="text"
           maxLength={4}
@@ -78,6 +154,7 @@ export default function TelaPagamento() {
           placeholder="código de segurança"
         />
         <Input
+          disabled={enviado}
           enviado={enviado}
           required
           type="month"
@@ -87,7 +164,11 @@ export default function TelaPagamento() {
           }}
         />
         <Button disabled={campoVazio() || enviado} preenchido={campoVazio()}>
-          Concluir a compra
+          {enviado ? (
+            <ImpulseSpinner size={40} color="#20b25d" />
+          ) : (
+            "Concluir a compra"
+          )}
         </Button>
       </form>
     </Box>
