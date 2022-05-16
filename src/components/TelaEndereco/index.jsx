@@ -3,7 +3,6 @@ import React, { useState, useContext } from "react";
 
 import Header from "../Header";
 import { Box, Input, Button } from "./style";
-import { ImpulseSpinner } from "react-spinners-kit";
 import AddressContext from "../../contexts/AddressContext";
 
 export default function TelaEndereco() {
@@ -85,7 +84,8 @@ export default function TelaEndereco() {
           maxLength={9}
           onBlur={pesquisaCep}
           onChange={(e) => {
-            SetEndereco({ ...endereco, cep: e.target.value });
+            let value = e.target.value.replace(/\D/g, "");
+            SetEndereco({ ...endereco, cep: value });
           }}
           value={endereco.cep}
         />
@@ -113,7 +113,8 @@ export default function TelaEndereco() {
           required
           value={endereco.estado}
           onChange={(e) => {
-            SetEndereco({ ...endereco, estado: e.target.value });
+            let value = e.target.value.replace(/\W/g, "");
+            SetEndereco({ ...endereco, estado: value });
           }}
           type="text"
         />

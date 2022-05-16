@@ -10,6 +10,7 @@ import TelaProduto from "./TelaProduto";
 import TelaEndereco from "./TelaEndereco";
 import AddressContext from "../contexts/AddressContext";
 import Carrinho from "./Carrinho";
+import TelaPagamento from "./TelaPagamento";
 
 export default function App() {
   const [userInfo, SetUserInfo] = useState(
@@ -32,6 +33,7 @@ export default function App() {
               <Route path="/produtos/:id" element={<TelaProduto />} />
               <Route path="/" element={<Inicio />} />
               <Route path="/checkout/endereco" element={<TelaEndereco />} />
+              <Route path="/checkout/pagamento" element={<TelaPagamento />} />
               <Route path="/carrinho" element={<Carrinho />} />
             </Routes>
           </AddressContext.Provider>
