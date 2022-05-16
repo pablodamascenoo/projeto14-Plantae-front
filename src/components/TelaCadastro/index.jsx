@@ -50,7 +50,6 @@ export default function TelaCadastro() {
 
     promisse.catch((erro) => {
       alert(erro.response.data);
-      console.log(e);
       SetEnviado(false);
     });
   }
