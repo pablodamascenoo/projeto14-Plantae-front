@@ -60,7 +60,7 @@ export default function TelaProduto() {
     );
 
     promisse.then(() => {
-      navigate("/inicio");
+      navigate("/");
       SetEnviado(false);
     });
     promisse.catch((erro) => {
