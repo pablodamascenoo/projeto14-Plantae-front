@@ -14,6 +14,5 @@ export default function VitrineContainer(props) {
 
   function mudarRota(idProduto) {
     navigate(`/produtos/${idProduto}`);
-    
   }
 }
