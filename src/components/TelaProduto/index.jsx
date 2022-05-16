@@ -64,7 +64,6 @@ export default function TelaProduto() {
       SetEnviado(false);
     });
     promisse.catch((erro) => {
-      console.log(erro);
       if (erro.response.status === 401) {
         alert("O usuário deve estar logado para adicionar itens ao carrinho");
         navigate("/auth/login");
