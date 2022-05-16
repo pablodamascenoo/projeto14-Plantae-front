@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../Header";
 import { Box, Input, Button } from "./style";
-import { ImpulseSpinner } from "react-spinners-kit";
 import AddressContext from "../../contexts/AddressContext";
+import UserContext from "../../contexts/UserContext";
 
 export default function TelaEndereco() {
   const [endereco, SetEndereco] = useState({
@@ -16,7 +17,42 @@ export default function TelaEndereco() {
     estado: "",
     complemento: "",
   });
-  const { address, SetAddress } = useContext(AddressContext);
+  const { SetAddress } = useContext(AddressContext);
+  const { userInfo } = useContext(UserContext);
+  const navigate = useNavigate();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userInfo?.token}`,
+    },
+  };
+
+  useEffect(() => {
+    if (!userInfo) {
+      alert("o usuário deve estar logado para entrar nessa página!");
+      navigate("/auth/login");
+      return;
+    }
+
+    const promisse = axios.get(
+      "https://plantae.herokuapp.com/carrinho",
+      config
+    );
+
+    promisse.then((obj) => {
+      const { data } = obj;
+      if (!data.length) {
+        alert("O usuário não possui itens no carrinho");
+        navigate("/");
+        return;
+      }
+    });
+
+    promisse.catch((erro) => {
+      alert(erro.response.data);
+      navigate("/");
+      return;
+    });
+  }, []);
 
   function enderecoVazio() {
     const keys = Object.keys(endereco);
@@ -58,8 +94,14 @@ export default function TelaEndereco() {
   function armazenaEndereco(e) {
     e.preventDefault();
 
+    if (enderecoVazio()) {
+      alert("preencha os campos corretamente");
+      return;
+    }
+
     localStorage.setItem("Address", JSON.stringify({ ...endereco }));
     SetAddress({ ...endereco });
+    navigate("/checkout/pagamento");
   }
 
   return (
@@ -85,7 +127,8 @@ export default function TelaEndereco() {
           maxLength={9}
           onBlur={pesquisaCep}
           onChange={(e) => {
-            SetEndereco({ ...endereco, cep: e.target.value });
+            let value = e.target.value.replace(/\D/g, "");
+            SetEndereco({ ...endereco, cep: value });
           }}
           value={endereco.cep}
         />
@@ -113,7 +156,8 @@ export default function TelaEndereco() {
           required
           value={endereco.estado}
           onChange={(e) => {
-            SetEndereco({ ...endereco, estado: e.target.value });
+            let value = e.target.value.replace(/\W/g, "");
+            SetEndereco({ ...endereco, estado: value });
           }}
           type="text"
         />

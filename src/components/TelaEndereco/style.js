@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Box = styled.main`
   padding-top: 70px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   form {
     display: flex;
