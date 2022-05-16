@@ -1,93 +1,104 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  height: 100%;
 
-position: relative;
+  position: relative;
 
-min-height: 100%;
-padding-top: 70px;
-background: #FFFFFF;
+  background: #ffffff;
 
-font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 
-    h1{
-        margin-bottom: 15px;
+  span {
+    font-weight: 700;
+    font-size: 18px;
+  }
 
-        font-weight: 700;
-        font-size: 20px;
+  h1 {
+    margin-bottom: 15px;
 
-        width: 90%;
-    }
+    font-weight: 700;
+    font-size: 20px;
 
-    img {
-        width: 70px;
-    }
+    width: 90%;
+  }
 
-    .listaDeItens {
-        width: 90%;
-    }
+  img {
+    width: 70px;
+  }
 
-    .item {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+  .listaDeItens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
 
-        width: 100%;
+  .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        padding-top: 10px;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-        background: #F1F4FB;
-    }
+    width: 100%;
 
-    .infos {
-        display: flex;
-        flex-direction: column;
-    }
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #f1f4fb;
+  }
 
-    .excluir {
-        width: 30px;
-    }
+  .infos {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .total {
-        display: flex;
-        justify-content: space-between;
+  .excluir {
+    width: 30px;
+  }
 
-        width: 90%;
+  .total {
+    display: flex;
+    justify-content: space-between;
 
-        font-weight: 700;
-        font-size: 20px;
+    width: 90%;
 
-    }
+    font-weight: 700;
+    font-size: 20px;
+  }
 
-    button {
+  a {
+    text-decoration: none;
+  }
 
-      height: 60px;
-      width: auto;
-        margin-top: 30px;
-      border-radius: 25px;
-      
-      font-size: 20px;
-      font-family: "Lato", sans-serif;
-    }
+  button {
+    cursor: pointer;
+    height: 60px;
+    width: auto;
+    margin-top: 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-family: "Lato", sans-serif;
+    color: white;
+    background-color: #1da154;
+  }
 
-    .carrinho {
-        width: 170px;
-    }
+  .carrinho {
+    width: 170px;
+  }
 
-    .deslogado {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50% , -50%);
+  .deslogado {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-    }
-`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+`;
