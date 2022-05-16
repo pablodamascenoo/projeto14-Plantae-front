@@ -43,6 +43,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  margin: 0 auto;
   height: 60px;
   border-radius: 25px;
   max-width: 365px;
