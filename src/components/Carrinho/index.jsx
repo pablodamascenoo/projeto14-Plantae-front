@@ -19,7 +19,7 @@ export default function Carrinho() {
 
     function solicitarCarrinho(){
         useEffect(() => {
-            const requisicao = axios.get("//127.0.0.1:5000/carrinho" , body);
+            const requisicao = axios.get("https://plantae.herokuapp.com/carrinho" , body);
 
             requisicao.then((resposta) => {
                 console.log(resposta);
