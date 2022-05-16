@@ -60,6 +60,26 @@ export default function Carrinho() {
                         <img src={lixo} alt="Excluir" className="excluir"/>
                     </div>
                     <div className="listaDeItens" >
+                        {/*map aqui iterando itensDoCarrinho */}
+                        <div className="item" >
+                            <img src={item.imagem}/>
+                            <div className="infos">
+                                <span>({item.quantidade}x) {item.nome}</span><span>R${item.preco}</span>
+                            </div>
+                            <img src={lixo} alt="Excluir" className="excluir"/>
+                        </div>
+                        {/*Fim do map */}
+                        <div className="total"><span>Total</span><span>R${total}</span></div>
+                    </div>
+                </div>
+                <Link to={"/checkout/endereco"}>
+                    <button>Finalizar Pedido</button>
+                </Link>
+            </Container>
+            </>
+            
+            /*
+             <div className="listaDeItens" >
                         <div className="item" >
                             <img src={item.imagem}/>
                             <div className="infos">
@@ -69,14 +89,7 @@ export default function Carrinho() {
                             </div>
                             <div className="total"><span>Total</span><span>R${total}</span></div>
                     </div>
-                </div>
-                <Link to={"/checkout/endereco"}>
-                    <button>Finalizar Pedido</button>
-                </Link>
-            </Container>
-            </>
-            
-            
+             */
         );
     }else {
         console.log("sem token;")
