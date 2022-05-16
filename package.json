@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "file-loader": "^6.2.0",
+    "node": "^17.7.2",
     "nodemon": "^2.0.16",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

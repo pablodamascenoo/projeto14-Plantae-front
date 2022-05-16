@@ -43,11 +43,12 @@ export default function TelaLogin() {
 
     promisse.then((obj) => {
       const { data } = obj;
+      
       localStorage.setItem(
         "UserInfo",
-        JSON.stringify({ token: data.token, nome: data.nome })
+        JSON.stringify({ token: data.token, nome: data.nome , email: email})
       );
-      SetUserInfo({ token: data.token, nome: data.nome });
+      SetUserInfo({ token: data.token, nome: data.nome , email: email});
       SetEnviado(false);
       navigate("/");
     });
