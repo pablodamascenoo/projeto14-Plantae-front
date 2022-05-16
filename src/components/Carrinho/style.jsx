@@ -8,8 +8,8 @@ align-items: center;
 position: relative;
 
 min-height: 100%;
-margin-top: 30px;
-background: pink;
+padding-top: 70px;
+background: #FFFFFF;
 
 font-family: 'Lato', sans-serif;
 
@@ -28,7 +28,6 @@ font-family: 'Lato', sans-serif;
 
     .listaDeItens {
         width: 90%;
-        background: blue;
     }
 
     .item {
@@ -41,7 +40,7 @@ font-family: 'Lato', sans-serif;
         padding-top: 10px;
         padding-bottom: 10px;
         margin-bottom: 15px;
-        background: green;
+        background: #F1F4FB;
     }
 
     .infos {
