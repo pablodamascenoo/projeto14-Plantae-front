@@ -53,9 +53,8 @@ export default function TelaProduto() {
       return;
     }
 
-    //https://plantae.herokuapp.com
     const promisse = axios.post(
-      "http://localhost:5000/carrinho",
+      "https://plantae.herokuapp.com/carrinho",
       { quantidade, idProduto: id },
       config
     );

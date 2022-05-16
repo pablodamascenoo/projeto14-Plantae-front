@@ -26,7 +26,7 @@ export default function Carrinho() {
   function solicitarCarrinho() {
     useEffect(() => {
       const requisicao = axios.get(
-        "http://localhost:5000/carrinho",
+        "https://plantae.herokuapp.com/carrinho",
         config,
         body
       );
