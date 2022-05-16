@@ -52,6 +52,28 @@ font-family: 'Lato', sans-serif;
         width: 30px;
     }
 
+    .total {
+        display: flex;
+        justify-content: space-between;
+
+        width: 90%;
+
+        font-weight: 700;
+        font-size: 20px;
+
+    }
+
+    button {
+
+      height: 60px;
+      width: auto;
+        margin-top: 30px;
+      border-radius: 25px;
+      
+      font-size: 20px;
+      font-family: "Lato", sans-serif;
+    }
+
     .carrinho {
         width: 170px;
     }
