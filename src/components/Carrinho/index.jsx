@@ -23,7 +23,7 @@ export default function Carrinho() {
             <Container>
                 <h1>Seu carrinho, {nomeUsuario}: </h1>
                 <div className="listaDeItens">
-                    <div className="item">
+                    <div className="itemgit ">
                         <img />
                         <div className="infos">
                             <span>(qntx) nome</span>
