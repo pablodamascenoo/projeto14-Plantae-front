@@ -35,14 +35,14 @@ export default function Carrinho() {
         const { data } = resposta;
         let soma = 0;
         data.forEach((item) => {
-          soma += item.preco * 1;
+          soma += item.preco * item.quantidade;
         });
         SetTotal(soma.toFixed(2));
         SetItensDoCarrinho([...data]);
       });
       requisicao.catch((resposta) => {
         const { data } = resposta;
-        console.log(data);
+        console.log(data.response);
       });
     }, []);
   }
@@ -84,7 +84,6 @@ export default function Carrinho() {
       </>
     );
   } else {
-    console.log("sem token;");
     return (
       <Container>
         <div className="deslogado">

@@ -53,6 +53,7 @@ export const Container = styled.main`
   .infos {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   .excluir {
