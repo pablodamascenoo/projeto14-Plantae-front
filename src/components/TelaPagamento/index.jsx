@@ -144,7 +144,7 @@ export default function TelaPagamento() {
           disabled={enviado}
           enviado={enviado}
           type="text"
-          maxLength={4}
+          maxLength={3}
           onChange={(e) => {
             let value = e.target.value.replace(/\D/g, "");
             SetPagamento({ ...pagamento, codigo: value });
