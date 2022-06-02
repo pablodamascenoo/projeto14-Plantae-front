@@ -102,4 +102,20 @@ export const Container = styled.main`
     align-items: center;
     justify-content: center;
   }
+
+  .vazio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & > h1 {
+      text-align: center;
+      width: 100%;
+    }
+
+    & > a {
+      display: flex;
+      justify-content: center;
+    }
+  }
 `;
