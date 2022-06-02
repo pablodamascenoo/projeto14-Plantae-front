@@ -23,8 +23,6 @@ export default function Carrinho() {
     },
   };
 
-  console.log(itensDoCarrinho.length);
-
   function solicitarCarrinho() {
     const requisicao = axios.get(
       "https://plantae.herokuapp.com/carrinho",
